@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<title>Steal a Sinal</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="game">
+  <canvas id="view" aria-label="Game world"></canvas>
+
+  <div id="hud" hidden>
+    <div id="hud-top">
+      <div id="wallet">
+        <div id="cash">$0</div>
+        <div id="rate">+$0/s</div>
+      </div>
+      <div id="hud-btns">
+        <button id="btn-shop" type="button">Upgrades</button>
+        <button id="btn-log" type="button">Log <span id="log-count">0/13</span></button>
+        <button id="btn-menu" type="button" aria-label="Menu">Menu</button>
+      </div>
+    </div>
+    <div id="shield-pill" class="down">Shield down</div>
+    <div id="toasts" aria-live="polite"></div>
+    <div id="stick"><div id="stick-knob"></div></div>
+    <div id="actions">
+      <button id="btn-action" type="button" disabled><span id="action-label">Find a sinal</span><kbd>E</kbd></button>
+      <button id="btn-zap" type="button">Zap<kbd>Space</kbd></button>
+    </div>
+  </div>
+
+  <div class="modal" id="m-start">
+    <div class="panel">
+      <div class="hero">
+        <img id="hero-sinal" src="sinal.jpg" alt="A sinal" width="84" height="84">
+        <div>
+          <p class="eyebrow">Buy them. Guard them. Steal them.</p>
+          <h1>Steal a Sinal</h1>
+        </div>
+      </div>
+      <ul class="howto">
+        <li><b>Buy</b> sinals off the belt in the middle. Each one pays you every second.</li>
+        <li><b>Steal</b> better ones from rival bases while their shield is down, then run home.</li>
+        <li><b>Zap</b> rivals to stun them and make them drop what they took from you.</li>
+        <li>Step on the <b>shield tile</b> inside your gate to lock your base.</li>
+      </ul>
+      <p class="keys"><kbd>WASD</kbd> move · <kbd>E</kbd> buy / steal / sell · <kbd>Space</kbd> zap · on a phone, drag to move</p>
+      <button id="btn-play" class="primary" type="button">Play</button>
+    </div>
+  </div>
+
+  <div class="modal" id="m-shop" hidden>
+    <div class="panel wide">
+      <header><h2>Upgrades</h2><button class="close" type="button" data-close aria-label="Close">×</button></header>
+      <div id="shop-list"></div>
+      <div id="rebirth-box">
+        <div>
+          <h3>Go Worldwide</h3>
+          <p id="rebirth-desc"></p>
+        </div>
+        <button id="btn-rebirth" type="button"></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="m-log" hidden>
+    <div class="panel wide">
+      <header><h2>Sinal Log</h2><button class="close" type="button" data-close aria-label="Close">×</button></header>
+      <p class="sub">Every sinal you have owned. Find all 13.</p>
+      <div id="log-grid"></div>
+    </div>
+  </div>
+
+  <div class="modal" id="m-menu" hidden>
+    <div class="panel">
+      <header><h2>Paused</h2><button class="close" type="button" data-close aria-label="Close">×</button></header>
+      <div class="menu-col">
+        <button id="btn-resume" class="primary" type="button">Resume</button>
+        <button id="btn-sound" type="button">Sound: on</button>
+        <button id="btn-reset" type="button">Start over</button>
+        <div id="reset-confirm" hidden>
+          <p>This wipes your cash, sinals and upgrades.</p>
+          <div class="row">
+            <button id="btn-reset-yes" class="danger" type="button">Wipe my save</button>
+            <button id="btn-reset-no" type="button">Keep playing</button>
+          </div>
+        </div>
+      </div>
+      <p class="keys"><kbd>WASD</kbd> move · <kbd>E</kbd> act · <kbd>Space</kbd> zap · <kbd>U</kbd> upgrades · <kbd>L</kbd> log · <kbd>Esc</kbd> pause</p>
+    </div>
+  </div>
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/world.js"></script>
+<script src="js/sim.js"></script>
+<script src="js/render.js"></script>
+<script src="js/ui.js"></script>
+</body>
+</html>
